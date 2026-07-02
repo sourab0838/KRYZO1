@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /wallet
+Disallow: /profile
+Disallow: /kyc
+Disallow: /chat
+Disallow: /sell
+Disallow: /seller-dashboard
+Disallow: /buyer-dashboard
+Disallow: /payment-settings
+
+Sitemap: https://kryzo.com/sitemap.xml
