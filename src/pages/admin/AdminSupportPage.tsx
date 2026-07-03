@@ -49,7 +49,7 @@ export function AdminSupportPage() {
     try {
       const { data, error } = await supabase
         .from('support_tickets')
-        .select('*, profile:profiles!support_tickets_user_id_fkey(full_name, username)')
+        .select('*, profile:profiles!support_tickets_user_id_profiles_fkey(full_name, username)')
         .order('created_at', { ascending: false });
       if (error) throw error;
       setTickets((data ?? []) as TicketRow[]);

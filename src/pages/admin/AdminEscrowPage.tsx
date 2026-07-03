@@ -52,14 +52,14 @@ export function AdminEscrowPage() {
     try {
       const { data, error } = await supabase
         .from('escrow_holds')
-        .select('*, buyer:profiles!escrow_holds_buyer_id_fkey(full_name, username), seller:profiles!escrow_holds_seller_id_fkey(full_name, username)')
+        .select('*, buyer:profiles!escrow_holds_buyer_id_profiles_fkey(full_name, username), seller:profiles!escrow_holds_seller_id_profiles_fkey(full_name, username)')
         .order('created_at', { ascending: false });
       if (error) throw error;
       setRows((data ?? []) as EscrowRow[]);
 
       const { data: dOrders } = await supabase
         .from('orders')
-        .select('*, buyer:profiles!orders_buyer_id_fkey(full_name, username), seller:profiles!orders_seller_id_fkey(full_name, username)')
+        .select('*, buyer:profiles!orders_buyer_id_profiles_fkey(full_name, username), seller:profiles!orders_seller_id_profiles_fkey(full_name, username)')
         .eq('escrow_status', 'disputed')
         .order('created_at', { ascending: false });
       setDisputed((dOrders ?? []) as DisputedOrder[]);

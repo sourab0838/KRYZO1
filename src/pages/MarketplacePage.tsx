@@ -33,7 +33,7 @@ export function MarketplacePage() {
       setLoading(true);
       let q = supabase
         .from('account_listings')
-        .select('*, seller:profiles!account_listings_seller_id_fkey(id, verified_seller, username, full_name, avatar_url)')
+        .select('*, seller:profiles!account_listings_seller_id_profiles_fkey(id, verified_seller, username, full_name, avatar_url)')
         .eq('status', 'approved');
       if (game !== 'all') q = q.eq('game', game);
       if (sort === 'price-low') q = q.order('price', { ascending: true });

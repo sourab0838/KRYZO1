@@ -40,7 +40,7 @@ export function AdminListingsPage() {
     try {
       const { data, error } = await supabase
         .from('account_listings')
-        .select('*, seller:profiles!account_listings_seller_id_fkey(full_name, username, email)')
+        .select('*, seller:profiles!account_listings_seller_id_profiles_fkey(full_name, username, email)')
         .order('created_at', { ascending: false });
       if (error) throw error;
       setRows((data ?? []) as ListingRow[]);

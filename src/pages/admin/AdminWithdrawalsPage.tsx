@@ -35,7 +35,7 @@ export function AdminWithdrawalsPage() {
     try {
       const { data, error } = await supabase
         .from('withdrawals')
-        .select('*, profile:profiles!withdrawals_user_id_fkey(full_name, username)')
+        .select('*, profile:profiles!withdrawals_user_id_profiles_fkey(full_name, username)')
         .order('created_at', { ascending: false });
       if (error) throw error;
       setRows((data ?? []) as WithdrawalRow[]);
